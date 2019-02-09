@@ -37,9 +37,10 @@ class Village(object):
         
         for i in self.population:
             i.day_end()
-        
+            
+    def remove_dead(self):
         # Clears dead villagers from list
-        
+    
         for i in self.population:
             if not i.alive:
                 self.population.remove(i)

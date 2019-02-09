@@ -14,7 +14,7 @@ from argparse import ArgumentParser
 from json import load
 from threading import Thread
 
-from villageswar.config import configs, get_config, get_generator, close_dump_file
+from villageswar.config import configs, get_config, get_generator, close_dump_file, get_cmd_args
 from villageswar.information import info
 from villageswar.exception import SimulationError, InvalidConfigError, InvalidGeneratorError
 from villageswar.generator import Generator
@@ -45,6 +45,16 @@ class WorldUpdater(Thread):
             
             try:
                 self.world_obj.day_pass()
+                
+                if get_cmd_args()['victory']:
+                    if len(self.world_obj.village1.population) == 0:
+                        info('%s wins' % self.world_obj.village1.name, village=self.world_obj.name)
+                        close_dump_file()
+                        exit(0)
+                    elif len(self.world_obj.village2.population) == 0:
+                        info('%s wins' % self.world_obj.village1.name, village=self.world_obj.name)
+                        close_dump_file()
+                        exit(0)
             except Exception as exc:
                 # Exception occurred, simulation is over
                 
@@ -62,6 +72,7 @@ def main():
     argp.add_argument('-x', '--xlim', action='store', type=int, help='Specifies a custom x limit to graph')
     argp.add_argument('-y', '--ylim', action='store', type=int, help='Specifies a custom y limit to graph')
     argp.add_argument('-u', '--until', action='store', type=int, help='Specifies a limit of days to the simulation')
+    argp.add_argument('-v', '--victory', action='store_true', help='Stops simulation when a village is annihilated')
     args = argp.parse_args()
     
     cmd_args = {}
@@ -89,13 +100,10 @@ def main():
     else:
         cmd_args['dump-file'] = None
     
-    if args.info:
-        # Indicates whether or not info should be printed on console
+    # Indicates whether or not info should be printed on console
         
-        cmd_args['info'] = True
-    else:
-        cmd_args['info'] = False
-    
+    cmd_args['info'] = bool(args.info)
+
     if args.xlim:
         # Specifies x limit
         
@@ -110,6 +118,10 @@ def main():
         # Specifies day limit
         
         cmd_args['until'] = args.until
+        
+    # Specifies whether or not simulation should stop when a village has no population
+    
+    cmd_args['victory'] = bool(args.victory)
     
     # Sets values on config variable
     

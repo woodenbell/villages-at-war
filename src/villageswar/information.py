@@ -20,6 +20,7 @@ def info(s, village=None):
         
         biggest_name = max([len(config['village-names'][0]), len(config['village-names'][1]),
                             len(config['world-name']), len('gen')]) + 1
+        
         s = ('%-' + str(biggest_name) + 's %s') % ('[%s]' % village, s)
     
     if cmd_args['info']:

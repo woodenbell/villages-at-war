@@ -48,7 +48,8 @@
       "attack": 40,
       "guard": 40,
       "distract": 5,
-      "rest": 15
+      "rest": 5,
+      "procreate": 10
     },
     "breeder": {
       "procreate": 60,
@@ -56,7 +57,8 @@
     },
     "healer": {
       "heal": 60,
-      "rest": 40
+      "rest": 20,
+      "procreate": 20
     },
     "retired": {
       "rest": 100
@@ -70,7 +72,8 @@
     "pregnancy-time": 15,
     "guard-presence-modifier": 0.2,
     "resistance-effect": 0.01,
-    "flee-chance": 0.15
+    "flee-chance": 0.15,
+    "actions-per-day": 3
   },
   "death": {
     "base-chance": 0.006
@@ -107,15 +110,15 @@
       "multiple-babies-chance-reduction": 0.5
     },
     "healer": {
-      "healing-base": 2.4
+      "healing-base": 4
     }
   },
   "base-stats": {
-    "stat-variation": 0.4,
+    "stat-variation": 0.5,
     "base-accuracy": 70,
     "base-fertility-range": [
       0,
-      40
+      60
     ],
     "health-influence": 0.4,
     "man": {
@@ -127,13 +130,13 @@
     "woman": {
       "health": 18,
       "strength": 8,
-      "resistance": 8,
+      "resistance": 10,
       "intelligence": 14
     }
   },
   "village-names": [
-    "RED",
-    "BLUE"
+    "BLUE",
+    "RED"
   ],
   "world-name": "Avros"
 }

@@ -301,7 +301,10 @@ class World(object):
         
         # Resolves every action
         
-        self.resolve_actions()
+        for i in range(config['action-extra']['actions-per-day']):
+            self.resolve_actions()
+            self.village1.remove_dead()
+            self.village2.remove_dead()
         
         # Day end
         

@@ -90,11 +90,11 @@
       "minProperties": 7,
       "maxProperties": 7,
       "patternProperties": {
-        "^(?: baby|child|warrior|breeder|healer|retired|pregnant)$": {
+        "^(?:baby|child|warrior|breeder|healer|retired|pregnant)$": {
           "type": "object",
           "minProperties": 0,
           "patternProperties": {
-            "^(?: rest|play|play-woods|attack|guard|procreate|heal|distract)$": {
+            "^(?:rest|play|play-woods|attack|guard|procreate|heal|distract)$": {
               "type": "integer",
               "minProperties": 1,
               "minimum": 1
@@ -125,13 +125,18 @@
         "flee-chance": {
           "type": "number",
           "minimum": 0
+        },
+        "actions-per-day": {
+          "type": "integer",
+          "minimum": 1
         }
       },
       "required": [
         "pregnancy-time",
         "guard-presence-modifier",
         "resistance-effect",
-        "flee-chance"
+        "flee-chance",
+        "actions-per-day"
       ]
     },
     "death": {
