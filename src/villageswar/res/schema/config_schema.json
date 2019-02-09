@@ -1,0 +1,379 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Configuration",
+  "description": "A configuration for the villageswar simulation",
+  "type": "object",
+  "properties": {
+    "names": {
+      "type": "object",
+      "properties": {
+        "man": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 2
+          },
+          "minItems": 1
+        },
+        "woman": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 2
+          },
+          "minItems": 1
+        },
+        "gender-neutral": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 2
+          }
+        }
+      },
+      "required": [
+        "man",
+        "woman"
+      ]
+    },
+    "time": {
+      "type": "object",
+      "properties": {
+        "year": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "year"
+      ]
+    },
+    "age": {
+      "type": "object",
+      "properties": {
+        "apex": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "increase": {
+          "type": "number",
+          "minimum": 0
+        },
+        "decrease": {
+          "type": "number",
+          "minimum": 0
+        },
+        "adulthood": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "retirement": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "baby": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "apex",
+        "increase",
+        "decrease",
+        "adulthood",
+        "retirement",
+        "baby"
+      ]
+    },
+    "action": {
+      "type": "object",
+      "minProperties": 7,
+      "maxProperties": 7,
+      "patternProperties": {
+        "^(?: baby|child|warrior|breeder|healer|retired|pregnant)$": {
+          "type": "object",
+          "minProperties": 0,
+          "patternProperties": {
+            "^(?: rest|play|play-woods|attack|guard|procreate|heal|distract)$": {
+              "type": "integer",
+              "minProperties": 1,
+              "minimum": 1
+            }
+          }
+        }
+      }
+    },
+    "action-extra": {
+      "type": "object",
+      "properties": {
+        "off-guard-penalty": {
+          "type": "number",
+          "minimum": 0
+        },
+        "pregnancy-time": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "guard-presence-modifier": {
+          "type": "number",
+          "minimum": 0
+        },
+        "resistance-effect": {
+          "type": "number",
+          "minimum": 0
+        },
+        "flee-chance": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "pregnancy-time",
+        "guard-presence-modifier",
+        "resistance-effect",
+        "flee-chance"
+      ]
+    },
+    "death": {
+      "type": "object",
+      "properties": {
+        "base-chance": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "base-chance"
+      ]
+    },
+    "jobs": {
+      "type": "object",
+      "properties": {
+        "names": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 3,
+          "maxItems": 3,
+          "uniqueItems": true
+        },
+        "professional-multiplier": {
+          "type": "number",
+          "minimum": 0
+        },
+        "professional-minimum-time": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "professional-chance-base": {
+          "type": "number",
+          "minimum": 0
+        },
+        "professional-chance-multiplier": {
+          "type": "number",
+          "minimum": 0
+        },
+        "selection": {
+          "type": "object",
+          "properties": {
+            "man": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "woman": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "minItems": 3,
+              "maxItems": 3
+            }
+          },
+          "required": [
+            "man",
+            "woman"
+          ]
+        },
+        "warrior": {
+          "type": "object",
+          "properties": {
+            "technique-multiplier": {
+              "type": "number",
+              "minimum": 0
+            },
+            "accuracy-bonus": {
+              "type": "number",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "technique-multiplier",
+            "accuracy-bonus"
+          ]
+        },
+        "breeder": {
+          "type": "object",
+          "properties": {
+            "fertility-multiplier": {
+              "type": "number",
+              "minimum": 0
+            },
+            "maximum-children-per-pregnancy": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "multiple-babies-chance-reduction": {
+              "type": "number",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "fertility-multiplier",
+            "maximum-children-per-pregnancy",
+            "multiple-babies-chance-reduction"
+          ]
+        },
+        "healer": {
+          "type": "object",
+          "properties": {
+            "healing-base": {
+              "type": "number",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "healing-base"
+          ]
+        }
+      },
+      "required": [
+        "professional-chance-base",
+        "professional-chance-multiplier",
+        "professional-minimum-time",
+        "professional-multiplier",
+        "names",
+        "selection"
+      ]
+    },
+    "base-stats": {
+      "type": "object",
+      "properties": {
+        "stat-variation": {
+          "type": "number",
+          "minimum": 0
+        },
+        "base-accuracy": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "base-fertility-range": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "uniqueItems": true
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "health-influence": {
+          "type": "number",
+          "minimum": 0
+        },
+        "man": {
+          "type": "object",
+          "properties": {
+            "health": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "strength": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "resistance": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "intelligence": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "health",
+            "strength",
+            "resistance",
+            "intelligence"
+          ]
+        },
+        "woman": {
+          "type": "object",
+          "properties": {
+            "health": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "strength": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "resistance": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "intelligence": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "health",
+            "strength",
+            "resistance",
+            "intelligence"
+          ]
+        }
+      },
+      "required": [
+        "stat-variation",
+        "base-fertility-range",
+        "base-accuracy",
+        "health-influence",
+        "man",
+        "woman"
+      ]
+    },
+    "village-names": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 2,
+      "maxItems": 2,
+      "uniqueItems": true
+    },
+    "world-name": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "names",
+    "time",
+    "age",
+    "action",
+    "action-extra",
+    "death",
+    "jobs",
+    "base-stats",
+    "village-names",
+    "world-name"
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "names": {
+    "man": [
+      "Davek",
+      "Avos",
+      "Ikurin",
+      "Seman",
+      "Abuth",
+      "Cayomb",
+      "Tumara"
+    ],
+    "woman": [
+      "Avis",
+      "Ezela",
+      "Mabiyh",
+      "Badis",
+      "Owela",
+      "Aduri",
+      "Timari"
+    ],
+    "gender-neutral": [
+      "Devi",
+      "Fiyah",
+      "Oren"
+    ]
+  },
+  "time": {
+    "year": 30
+  },
+  "age": {
+    "apex": 38,
+    "increase": 0.028,
+    "decrease": 0.018,
+    "adulthood": 20,
+    "retirement": 65,
+    "baby": 3
+  },
+  "action": {
+    "baby": {
+      "rest": 100
+    },
+    "child": {
+      "play": 50,
+      "play-woods": 20,
+      "rest": 30
+    },
+    "warrior": {
+      "attack": 40,
+      "guard": 40,
+      "distract": 5,
+      "rest": 15
+    },
+    "breeder": {
+      "procreate": 60,
+      "rest": 40
+    },
+    "healer": {
+      "heal": 60,
+      "rest": 40
+    },
+    "retired": {
+      "rest": 100
+    },
+    "pregnant": {
+      "rest": 100
+    }
+  },
+  "action-extra": {
+    "off-guard-penalty": 0.2,
+    "pregnancy-time": 15,
+    "guard-presence-modifier": 0.2,
+    "resistance-effect": 0.01,
+    "flee-chance": 0.15
+  },
+  "death": {
+    "base-chance": 0.006
+  },
+  "jobs": {
+    "names": [
+      "warrior",
+      "breeder",
+      "healer"
+    ],
+    "professional-multiplier": 1.2,
+    "professional-minimum-time": 20,
+    "professional-chance-base": 0.6,
+    "professional-chance-multiplier": 0.8,
+    "selection": {
+      "man": [
+        50,
+        40,
+        10
+      ],
+      "woman": [
+        10,
+        40,
+        50
+      ]
+    },
+    "warrior": {
+      "technique-multiplier": 1.4,
+      "accuracy-bonus": 0.1
+    },
+    "breeder": {
+      "fertility-multiplier": 1.4,
+      "maximum-children-per-pregnancy": 3,
+      "multiple-babies-chance-reduction": 0.5
+    },
+    "healer": {
+      "healing-base": 2.4
+    }
+  },
+  "base-stats": {
+    "stat-variation": 0.4,
+    "base-accuracy": 70,
+    "base-fertility-range": [
+      0,
+      40
+    ],
+    "health-influence": 0.4,
+    "man": {
+      "health": 20,
+      "strength": 12,
+      "resistance": 10,
+      "intelligence": 10
+    },
+    "woman": {
+      "health": 18,
+      "strength": 8,
+      "resistance": 8,
+      "intelligence": 14
+    }
+  },
+  "village-names": [
+    "RED",
+    "BLUE"
+  ],
+  "world-name": "Avros"
+}

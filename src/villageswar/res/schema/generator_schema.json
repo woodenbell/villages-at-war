@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Generator",
+  "description": "A population generator for the villageswar simulation",
+  "type": "object",
+  "patternProperties": {
+    "^(?: 1|2|both)$": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": [
+              "integer",
+              "array"
+            ],
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "sex": {
+            "type": [
+              "string",
+              "array"
+            ],
+            "pattern": "^(?: male|female)$",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "age": {
+            "type": [
+              "integer",
+              "array"
+            ],
+            "minimum": 0,
+            "items": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 2,
+              "items": [
+                {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                {
+                  "type": [
+                    "integer",
+                    "array"
+                  ],
+                  "minimum": 0,
+                  "minItems": 2,
+                  "maxItems": 2,
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              ]
+            },
+            "minItems": 1
+          },
+          "job": {
+            "type": [
+              "string",
+              "array"
+            ],
+            "pattern": "^(?: warrior|breeder|healer)$",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "amount"
+        ]
+      }
+    }
+  },
+  "minProperties": 1,
+  "maxProperties": 2
+}

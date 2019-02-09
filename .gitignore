@@ -1,0 +1,7 @@
+*.bak
+.idea
+*.pyi
+__pycache__
+build
+dist
+villages_at_war.egg-info
