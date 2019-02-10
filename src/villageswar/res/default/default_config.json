@@ -70,7 +70,7 @@
   },
   "action-extra": {
     "off-guard-penalty": 0.2,
-    "pregnancy-time": 15,
+    "pregnancy-time": 30,
     "guard-presence-modifier": 0.2,
     "resistance-effect": 0.01,
     "flee-chance": 0.15,

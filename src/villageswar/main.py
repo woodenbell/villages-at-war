@@ -48,7 +48,7 @@ class WorldUpdater(Thread):
                 
                 if get_cmd_args()['victory']:
                     if len(self.world_obj.village1.population) == 0:
-                        info('%s wins' % self.world_obj.village1.name, village=self.world_obj.name)
+                        info('%s wins' % self.world_obj.village2.name, village=self.world_obj.name)
                         close_dump_file()
                         exit(0)
                     elif len(self.world_obj.village2.population) == 0:

@@ -16,7 +16,8 @@ setup(name='villages-at-war',
       classifiers=[
           'License :: OSI Approved :: MIT License',
           'Programming Language :: Python :: 3',
-          'Operating System :: OS Independent'
+          'Operating System :: OS Independent',
+          'Topic :: Games/Entertainment'
       ],
       package_data={
           'villageswar': [join('res', '*')],
