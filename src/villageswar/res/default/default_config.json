@@ -33,7 +33,8 @@
     "decrease": 0.018,
     "adulthood": 20,
     "retirement": 65,
-    "baby": 3
+    "baby": 3,
+    "old-death-chance": 0.14
   },
   "action": {
     "baby": {
@@ -45,20 +46,20 @@
       "rest": 30
     },
     "warrior": {
-      "attack": 40,
+      "attack": 20,
       "guard": 40,
-      "distract": 5,
-      "rest": 5,
+      "distract": 15,
+      "rest": 15,
       "procreate": 10
     },
     "breeder": {
-      "procreate": 60,
-      "rest": 40
+      "procreate": 30,
+      "rest": 70
     },
     "healer": {
       "heal": 60,
-      "rest": 20,
-      "procreate": 20
+      "rest": 30,
+      "procreate": 10
     },
     "retired": {
       "rest": 100

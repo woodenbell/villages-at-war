@@ -19,7 +19,8 @@ class Village(object):
         self.population = []
         self.name = name
         self.data = {
-            'dead': 0
+            'dead': 0,
+            'days': 0
         }
     
     def day_start(self):
@@ -27,8 +28,11 @@ class Village(object):
         
         # Iterates over population in order to call their methods
         
+        self.data['days'] += 1
+    
+    def population_activities(self):
         for i in self.population:
-            i.day_start()
+            i.choose_action()
     
     def day_end(self):
         # Simulates the end of a day in the village

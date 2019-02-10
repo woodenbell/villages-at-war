@@ -302,6 +302,8 @@ class World(object):
         # Resolves every action
         
         for i in range(config['action-extra']['actions-per-day']):
+            self.village1.population_activities()
+            self.village2.population_activities()
             self.resolve_actions()
             self.village1.remove_dead()
             self.village2.remove_dead()
@@ -372,12 +374,14 @@ class World(object):
         # Iterates over village 1 population
         
         for i in self.village1.population:
-            categories[0][i.action.action_type].append(i)
+            if i and i.alive:
+                categories[0][i.action.action_type].append(i)
         
         # Iterates over village 2 population
         
         for i in self.village2.population:
-            categories[1][i.action.action_type].append(i)
+            if i and i.alive:
+                categories[1][i.action.action_type].append(i)
         
         return categories
     

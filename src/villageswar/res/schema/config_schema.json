@@ -74,6 +74,10 @@
         "baby": {
           "type": "integer",
           "minimum": 1
+        },
+        "old-death-chance": {
+          "type": "number",
+          "minimum": 0
         }
       },
       "required": [
@@ -82,7 +86,8 @@
         "decrease",
         "adulthood",
         "retirement",
-        "baby"
+        "baby",
+        "old-death-chance"
       ]
     },
     "action": {

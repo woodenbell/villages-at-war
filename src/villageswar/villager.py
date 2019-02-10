@@ -5,6 +5,7 @@ from __future__ import absolute_import
 from builtins import range
 from builtins import int
 from future import standard_library
+
 standard_library.install_aliases()
 
 from builtins import object
@@ -92,7 +93,7 @@ class Villager(object):
         self.check_fertility()
         self.actual_stats()
     
-    def day_start(self):
+    def choose_action(self):
         # Simulates the start of a day in the life of the villager
         
         # If dead, do nothing
@@ -185,7 +186,7 @@ class Villager(object):
     
     def lose_health(self, amount):
         # Reduces health
-
+        
         self.actual_health -= amount
         
         # Checks if health <= 0 (certain death)
@@ -210,7 +211,12 @@ class Villager(object):
         
         health_percentage = self.actual_health / self.health
         
-        return 1 - ((1 - base_chance) ** (1 / health_percentage))
+        if self.retired:
+            return 1 - ((1 - base_chance) ** ((1 / health_percentage)
+                                              + (1 / ((1-config['age']['old-death-chance']) ** (
+                                                self.age - config['age']['retirement'] + 1)))))
+        else:
+            return 1 - ((1 - base_chance) ** (1 / health_percentage))
     
     def mortality_risk(self):
         # Gets random number to apply risk of dying
@@ -218,8 +224,8 @@ class Villager(object):
         rand = uniform(0, 1)
         
         # Tests against chance of dying
-
-        if rand <= self.calculate_death_chance() and not self.alive:
+        
+        if rand <= self.calculate_death_chance() and self.alive:
             # Makes villager die
             
             self.die()
