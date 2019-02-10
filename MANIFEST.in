@@ -1,3 +1,4 @@
 include src/villageswar/res/default/*.json
 include src/villageswar/res/schema/*.json
 include README.md
+include LICENSE.txt

@@ -1,3 +1,5 @@
+from os.path import join
+
 from setuptools import setup, find_packages
 
 setup(name='villages-at-war',
@@ -11,8 +13,14 @@ setup(name='villages-at-war',
       packages=find_packages('src'),
       package_dir={'': 'src'},
       include_package_data=True,
+      classifiers=[
+          'License :: OSI Approved :: MIT License',
+          'Programming Language :: Python :: 3',
+          'Operating System :: OS Independent'
+      ],
       package_data={
-            'villageswar': ['res/*']
+          'villageswar': [join('res', '*')],
+          '': ['README.md', 'LICENSE.txt']
       },
       entry_points={
           'console_scripts': ['villages-at-war=villageswar.main:main'],
