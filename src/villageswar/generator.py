@@ -1,12 +1,3 @@
-from __future__ import division
-from __future__ import print_function
-from __future__ import unicode_literals
-from __future__ import absolute_import
-from builtins import range
-from builtins import map
-from future import standard_library
-standard_library.install_aliases()
-
 from builtins import object
 from functools import reduce
 from random import randint
@@ -15,6 +6,9 @@ from villageswar.job import Job
 from villageswar.villager import Villager
 from villageswar.information import info
 from villageswar.exception import InvalidGeneratorError
+
+
+# Gets configuration
 
 config = get_config()
 

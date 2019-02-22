@@ -74,7 +74,8 @@
     "guard-presence-modifier": 0.2,
     "resistance-effect": 0.01,
     "flee-chance": 0.15,
-    "actions-per-day": 3
+    "actions-per-day": 3,
+    "rest-percentage": 20
   },
   "death": {
     "base-chance": 0.006

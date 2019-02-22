@@ -1,14 +1,3 @@
-from __future__ import print_function
-from __future__ import division
-from __future__ import unicode_literals
-from __future__ import absolute_import
-from builtins import filter
-from builtins import range
-from builtins import int
-from future import standard_library
-standard_library.install_aliases()
-
-from builtins import object
 from villageswar.action import action_map, ATTACK_ACTION, \
     PROCREATE_ACTION, HEAL_ACTION, GUARD_ACTION, DISTRACT_ACTION, \
     PLAY_WOODS_ACTION, REST_ACTION, PLAY_ACTION
@@ -16,7 +5,8 @@ from villageswar.config import get_config, get_cmd_args, stop
 from villageswar.information import info
 from random import choice, uniform, randint
 
-# Gets the selected configuration
+
+# Gets the configuration
 
 config = get_config()
 
@@ -42,7 +32,9 @@ def process_action(villager, categories, village_1_2, villager_index, rem_indexe
     if not villager.alive:
         return villager_index,
     
-    if villager.action.action_type == ATTACK_ACTION:
+    if villager.action.action_type == REST_ACTION:
+        return process_rest(villager, villager_index)
+    elif villager.action.action_type == ATTACK_ACTION:
         
         # Calculates infiltration chance
         
@@ -118,6 +110,30 @@ def process_action(villager, categories, village_1_2, villager_index, rem_indexe
     
     return ()
 
+
+def process_rest(villager, target_index):
+    # Simulates resting
+    
+    info('%s rests' % villager.name, village=villager.village.name)
+    
+    if not villager.alive:
+        return target_index
+    
+    # Calculates amount to heal
+    
+    heal_amount = int(villager.health * config['action-extra']['rest-percentage'] / 100)
+    print('heal', heal_amount)
+    # If life will be full, sets to full life instead
+    
+    if (villager.actual_health + heal_amount) > villager.health:
+        villager.actual_health = villager.health
+    else:
+        villager.actual_health += heal_amount
+    
+    villager.actual_stats()
+    
+    return ()
+    
 
 def process_combat(villager1, villager2, target_off_guard, villager_index, target_index):
     # Simulates a combat between the attacker and the target

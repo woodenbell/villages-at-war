@@ -134,6 +134,10 @@
         "actions-per-day": {
           "type": "integer",
           "minimum": 1
+        },
+        "rest-percentage": {
+          "type": "integer",
+          "minimum": 0
         }
       },
       "required": [
@@ -141,7 +145,8 @@
         "guard-presence-modifier",
         "resistance-effect",
         "flee-chance",
-        "actions-per-day"
+        "actions-per-day",
+        "rest-percentage"
       ]
     },
     "death": {

@@ -1,22 +1,12 @@
-from __future__ import division
-from __future__ import unicode_literals
-from __future__ import print_function
-from __future__ import absolute_import
-from builtins import range
-from builtins import int
-from future import standard_library
-
-standard_library.install_aliases()
-
-from builtins import object
 from functools import reduce
 from random import choice, randint, uniform
 from villageswar.config import get_config, next_id
 from villageswar.information import info
 from villageswar.action import action_map, Action
-
-# Gets the selected configuration
 from villageswar.job import Job
+
+
+# Gets the configuration
 
 config = get_config()
 

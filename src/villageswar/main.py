@@ -1,19 +1,7 @@
-from __future__ import print_function
-from __future__ import unicode_literals
-from __future__ import division
-from __future__ import absolute_import
-from builtins import super
-from builtins import open
-from traceback import format_exc
-
-from future import standard_library
 from jsonschema import ValidationError
-
-standard_library.install_aliases()
 from argparse import ArgumentParser
 from json import load
 from threading import Thread
-
 from villageswar.config import configs, get_config, get_generator, close_dump_file, get_cmd_args
 from villageswar.information import info
 from villageswar.exception import SimulationError, InvalidConfigError, InvalidGeneratorError
@@ -27,12 +15,11 @@ from villageswar.util import Barrier
 
 class WorldUpdater(Thread):
     def __init__(self, world, barrier):
+        super().__init__()
         self.world_obj = world
         self.barrier = barrier
         self.should_run = True
         
-        super().__init__()
-    
     def run(self):
         while True:
             if not self.should_run:

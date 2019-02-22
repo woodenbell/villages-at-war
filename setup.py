@@ -15,7 +15,7 @@ setup(name='villages-at-war',
       include_package_data=True,
       classifiers=[
           'License :: OSI Approved :: MIT License',
-          'Programming Language :: Python :: 3',
+          'Programming Language :: Python :: 3.5',
           'Operating System :: OS Independent',
           'Topic :: Games/Entertainment'
       ],
